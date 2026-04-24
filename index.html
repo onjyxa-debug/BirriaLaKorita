@@ -182,24 +182,64 @@ nav {
 .social-text small { display: block; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
 
 /* MENU */
-.menu-section { padding: 5rem 1.5rem; background: var(--off-white); }
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-.menu-card { background: var(--white); border: 1px solid var(--mid-gray); border-radius: 2px; overflow: hidden; transition: box-shadow 0.25s, transform 0.2s; }
-.menu-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.12); transform: translateY(-3px); }
-.menu-card-top { background: var(--green); height: 6px; }
-.menu-card.special .menu-card-top { background: var(--red); }
-.menu-card-body { padding: 1.5rem; }
-.menu-card-tag {
-  display: inline-block; margin-bottom: 0.6rem;
-  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-  background: #E8F5EC; color: var(--green-dark);
-  padding: 0.2rem 0.55rem; border-radius: 1px; font-weight: 700; font-family: 'Oswald', sans-serif;
-}
-.menu-card.special .menu-card-tag { background: #FAEAEC; color: var(--red-dark); }
-.menu-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.35rem; color: var(--dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
-.menu-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem; }
-.menu-price { font-family: 'Oswald', sans-serif; font-size: 1rem; color: var(--green-dark); font-weight: 600; letter-spacing: 0.05em; }
-.menu-card.special .menu-price { color: var(--red); }
+ .menu-section { padding: 5rem 1.5rem; background: #f7f7f7; }
+ .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.1rem; }
+ .menu-card {
+   background: var(--white);
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s;
+   cursor: default;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+ }
+ .menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.13); }
+ .menu-card-img {
+   width: 100%; height: 155px;
+   object-fit: cover; display: block;
+   background: #ececec;
+ }
+ .menu-card-body { padding: 0.8rem 0.9rem 0.95rem; flex: 1; display: flex; flex-direction: column; }
+ .menu-card-badge {
+   display: inline-block; margin-bottom: 0.35rem;
+   font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+   font-weight: 800; font-family: 'Oswald', sans-serif;
+   padding: 0.18rem 0.45rem; border-radius: 3px;
+ }
+ .badge-hot      { background: #FFF0EE; color: #C8102E; }
+ .badge-original { background: #FFF5E0; color: #B8860B; }
+ .badge-new      { background: #E8F5EC; color: #1a7a3c; }
+ .menu-card h3 {
+   font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 700;
+   text-transform: uppercase; letter-spacing: 0.03em;
+   color: var(--dark); margin-bottom: 0.28rem; line-height: 1.25;
+ }
+ .menu-card p {
+   font-size: 0.75rem; color: var(--text-muted);
+   line-height: 1.5; margin-bottom: auto; padding-bottom: 0.6rem;
+ }
+ .menu-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+ .menu-price { font-family: 'Oswald', sans-serif; font-size: 1.05rem; color: var(--dark); font-weight: 700; }
+ .menu-price.ask { font-size: 0.78rem; color: var(--text-muted); font-family: 'Lato', sans-serif; font-weight: 400; }
+ .menu-add-btn {
+   width: 28px; height: 28px; border-radius: 50%;
+   background: var(--red); color: white; border: none; cursor: pointer;
+   font-size: 1.25rem; line-height: 1; display: flex; align-items: center; justify-content: center;
+   transition: background 0.15s, transform 0.12s; flex-shrink: 0;
+ }
+ .menu-add-btn:hover { background: var(--red-dark); transform: scale(1.12); }
+ @media (max-width: 640px) {
+   .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+   .menu-card-img { height: 115px; }
+   .menu-card-body { padding: 0.6rem 0.7rem 0.7rem; }
+   .menu-card h3 { font-size: 0.82rem; }
+   .menu-card p { font-size: 0.68rem; }
+   .menu-price { font-size: 0.92rem; }
+   .menu-add-btn { width: 24px; height: 24px; font-size: 1rem; }
+ }
+ @media (min-width: 1100px) { .menu-grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* STORY */
 .story-section { padding: 5rem 1.5rem; background: var(--white); }
@@ -788,161 +828,252 @@ section { transition: none; }
 </div>
 
 <!-- MENU -->
-<section class="menu-section" id="menu">
-  <div class="section-inner">
-    <div class="section-header">
-      <p class="section-eyebrow" data-es="Lo Que Servimos" data-en="What We Serve">Lo Que Servimos</p>
-      <h2 class="section-title" data-es="El Menú" data-en="The Menu">El Menú</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="menu-grid">
+ <section class="menu-section" id="menu">
+   <div class="section-inner">
+     <div class="section-header">
+       <p class="section-eyebrow sr-clip" data-es="Lo Que Servimos" data-en="What We Serve">Lo Que Servimos</p>
+       <h2 class="section-title" data-es="El Menú" data-en="The Menu">El Menú</h2>
+       <div class="section-rule sr-clip"></div>
+     </div>
+     <div class="menu-grid">
 
-      <!-- 1 — Quesabirria -->
-      <div class="menu-card special">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="🔥 Lo más pedido" data-en="🔥 Most Popular">🔥 Lo más pedido</span>
-          <h3 data-es="Quesabirria con Consomé" data-en="Quesabirria with Consomé">Quesabirria con Consomé</h3>
-          <p data-es="Tortilla dorada con queso derretido, birria de res tierna, cebolla y cilantro — consomé para mojar incluido." data-en="Crispy tortilla with melted cheese, tender beef birria, onion and cilantro — consomé for dipping included.">Tortilla dorada con queso derretido, birria de res tierna, cebolla y cilantro — consomé para mojar incluido.</p>
-          <span class="menu-price">$19.99</span>
-        </div>
-      </div>
+       <!-- 1 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-1.avif" alt="Quesabirria with Consomé" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-hot">🔥 Most Popular</span>
+           <h3 data-es="Quesabirria con Consomé" data-en="Quesabirria with Consomé">Quesabirria con Consomé</h3>
+           <p data-es="Tortilla dorada con queso derretido y birria tierna — consomé para mojar incluido." data-en="Tender beef in crispy tortilla served with consomé.">Tortilla dorada con queso derretido y birria tierna — consomé para mojar incluido.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$19.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 2 — Tacos Dorados -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="Crujiente" data-en="Crispy">Crujiente</span>
-          <h3 data-es="Tacos Dorados con Consomé" data-en="Tacos Dorados with Consomé">Tacos Dorados con Consomé</h3>
-          <p data-es="Tacos fritos y crujientes de birria con consomé para mojar, cebolla y cilantro frescos." data-en="Crispy fried birria tacos with consomé for dipping, fresh onion and cilantro.">Tacos fritos y crujientes de birria con consomé para mojar, cebolla y cilantro frescos.</p>
-          <span class="menu-price">$19.99</span>
-        </div>
-      </div>
+       <!-- 2 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-2.avif" alt="Tacos Dorados with Consomé" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-hot">🔥 Popular</span>
+           <h3 data-es="Tacos Dorados con Consomé" data-en="Tacos Dorados with Consomé">Tacos Dorados con Consomé</h3>
+           <p data-es="Tacos crujientes con queso y birria, servidos con consomé para mojar." data-en="Crispy tacos with cheese and meat, served with consomé.">Tacos crujientes con queso y birria, servidos con consomé para mojar.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$19.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 3 — Taco Regular Birria -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="4 piezas" data-en="4 pieces">4 piezas</span>
-          <h3 data-es="Taco Regular Birria" data-en="Taco Regular Birria">Taco Regular Birria</h3>
-          <p data-es="Cuatro tacos de birria de res en tortilla de maíz con cebolla, cilantro y salsa." data-en="Four soft birria tacos on corn tortillas with onion, cilantro and salsa.">Cuatro tacos de birria de res en tortilla de maíz con cebolla, cilantro y salsa.</p>
-          <span class="menu-price">$16.50</span>
-        </div>
-      </div>
+       <!-- 3 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-3.avif" alt="Pizza Birria" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-original">⭐ La Korita Original</span>
+           <h3 data-es="Pizza Birria" data-en="Pizza Birria">Pizza Birria</h3>
+           <p data-es="Pizza de birria con triple mozzarella derretida sobre tortilla de harina." data-en="Birria pizza with melted mozzarella cheese.">Pizza de birria con triple mozzarella derretida sobre tortilla de harina.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$39.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 4 — Taco Regular Asada -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="4 piezas" data-en="4 pieces">4 piezas</span>
-          <h3 data-es="Taco Regular Asada" data-en="Taco Regular Asada">Taco Regular Asada</h3>
-          <p data-es="Cuatro tacos de carne asada en tortilla de maíz con cebolla, cilantro y salsa." data-en="Four soft carne asada tacos on corn tortillas with onion, cilantro and salsa.">Cuatro tacos de carne asada en tortilla de maíz con cebolla, cilantro y salsa.</p>
-          <span class="menu-price">$16.50</span>
-        </div>
-      </div>
+       <!-- 4 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-4.avif" alt="Taco Regular Birria" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-new">4 piezas</span>
+           <h3 data-es="Taco Regular Birria" data-en="Taco Regular Birria">Taco Regular Birria</h3>
+           <p data-es="Cuatro tacos de birria con cebolla y cilantro frescos." data-en="Four birria tacos with onions and cilantro.">Cuatro tacos de birria con cebolla y cilantro frescos.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$16.50</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 5 — Burrito -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="Abundante" data-en="Hearty">Abundante</span>
-          <h3 data-es="Burrito (Asada o Birria)" data-en="Burrito (Asada or Birria)">Burrito (Asada o Birria)</h3>
-          <p data-es="Tortilla de harina grande con carne al gusto, arroz, frijoles y salsa roja de la casa." data-en="Large flour tortilla with your choice of meat, rice, beans and our house red salsa.">Tortilla de harina grande con carne al gusto, arroz, frijoles y salsa roja de la casa.</p>
-          <span class="menu-price">$15.99</span>
-        </div>
-      </div>
+       <!-- 5 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-5.avif" alt="Birria Ramen" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-original">Fusión</span>
+           <h3 data-es="Birria Ramen" data-en="Birria Ramen">Birria Ramen</h3>
+           <p data-es="Ramen con sabor profundo de birria mexicana — único en el Antelope Valley." data-en="Ramen with rich birria flavor.">Ramen con sabor profundo de birria mexicana — único en el Antelope Valley.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$18.00</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 6 — Birria Ramen -->
-      <div class="menu-card special">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="Fusión" data-en="Fusion">Fusión</span>
-          <h3>Birria Ramen</h3>
-          <p data-es="Ramen estilo japonés fusionado con birria mexicana — único en el Antelope Valley." data-en="Japanese-style ramen fused with Mexican birria — one of a kind in the Antelope Valley.">Ramen estilo japonés fusionado con birria mexicana — único en el Antelope Valley.</p>
-          <span class="menu-price">$18.00</span>
-        </div>
-      </div>
+       <!-- 6 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-6.avif" alt="Quesabirria Rice and Beans" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-new">Plato Completo</span>
+           <h3 data-es="Quesabirria con Arroz y Frijoles" data-en="Quesabirria Rice &amp; Beans">Quesabirria con Arroz y Frijoles</h3>
+           <p data-es="Quesabirria servida con arroz, frijoles y consomé para mojar." data-en="Quesabirria served with rice and beans.">Quesabirria servida con arroz, frijoles y consomé para mojar.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$19.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 7 — Quesabirria Plate -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="Plato Completo" data-en="Full Plate">Plato Completo</span>
-          <h3 data-es="Plato Quesabirria" data-en="Quesabirria Plate">Plato Quesabirria</h3>
-          <p data-es="Quesabirria servida con arroz, frijoles y consomé para mojar — el plato completo." data-en="Quesabirria served with rice, beans and consomé for dipping — the full plate.">Quesabirria servida con arroz, frijoles y consomé para mojar — el plato completo.</p>
-          <span class="menu-price">$19.99</span>
-        </div>
-      </div>
+       <!-- 7 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-7.avif" alt="Asada Fries" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-hot">🔥 Popular</span>
+           <h3 data-es="Asada Fries" data-en="Asada Fries">Asada Fries</h3>
+           <p data-es="Papas con queso fundido, carne asada y salsa de la casa." data-en="Fries with cheese, meat, and sauce on the side.">Papas con queso fundido, carne asada y salsa de la casa.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$21.50</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 8 — Asada Fries -->
-      <div class="menu-card special">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="🔥 Popular" data-en="🔥 Popular">🔥 Popular</span>
-          <h3>Asada Fries</h3>
-          <p data-es="Papas fritas cubiertas con carne asada, queso fundido, crema, pico de gallo y cilantro." data-en="Fries loaded with carne asada, melted cheese, sour cream, pico de gallo and cilantro.">Papas fritas cubiertas con carne asada, queso fundido, crema, pico de gallo y cilantro.</p>
-          <span class="menu-price">$21.50</span>
-        </div>
-      </div>
+       <!-- 8 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-8.avif" alt="Burrito de Birria" loading="lazy">
+         <div class="menu-card-body">
+           <h3 data-es="Burrito de Birria" data-en="Burrito de Birria">Burrito de Birria</h3>
+           <p data-es="Burrito de birria con arroz, frijoles y queso." data-en="Birria burrito with rice, beans, and cheese.">Burrito de birria con arroz, frijoles y queso.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$15.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 9 — Birria Fries -->
-      <div class="menu-card special">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="🔥 Popular" data-en="🔥 Popular">🔥 Popular</span>
-          <h3>Birria Fries</h3>
-          <p data-es="Papas fritas cubiertas con birria de res, queso fundido, cebolla, cilantro y consomé para mojar." data-en="Fries loaded with beef birria, melted cheese, onion, cilantro and consomé for dipping.">Papas fritas cubiertas con birria de res, queso fundido, cebolla, cilantro y consomé para mojar.</p>
-          <span class="menu-price">$21.50</span>
-        </div>
-      </div>
+       <!-- 9 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-9.avif" alt="Small Consomé" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-new">Tradicional</span>
+           <h3 data-es="Consomé Chico" data-en="Small Consomé">Consomé Chico</h3>
+           <p data-es="Caldo de birria de res con carne, cebolla, cilantro y limón." data-en="Birria broth with meat.">Caldo de birria de res con carne, cebolla, cilantro y limón.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$5.50</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 10 — Combo Plate -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="Combo" data-en="Combo">Combo</span>
-          <h3 data-es="Combo Plate" data-en="Combo Plate">Combo Plate</h3>
-          <p data-es="Birria de res con arroz, frijoles y consomé incluido — el combo definitivo de La Korita." data-en="Beef birria with rice, beans and consomé included — La Korita's ultimate combo.">Birria de res con arroz, frijoles y consomé incluido — el combo definitivo de La Korita.</p>
-          <span class="menu-price">$21.50</span>
-        </div>
-      </div>
+       <!-- 10 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-10.avif" alt="Pizza La Korita" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-original">⭐ La Korita Original</span>
+           <h3 data-es="Pizza La Korita" data-en="Pizza La Korita">Pizza La Korita</h3>
+           <p data-es="Pizza birria cargada con Asada Fries — la experiencia completa." data-en="Loaded birria pizza with asada fries.">Pizza birria cargada con Asada Fries — la experiencia completa.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$59.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 11 — Pizza Birria -->
-      <div class="menu-card special">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="🔥 La Korita Original" data-en="🔥 La Korita Original">🔥 La Korita Original</span>
-          <h3>Pizza Birria</h3>
-          <p data-es="Pizza de birria sobre tortilla de harina con triple capa de mozzarella y carne de birria. Exclusiva de La Korita." data-en="Birria pizza on flour tortilla with triple mozzarella layer and birria meat. La Korita exclusive.">Pizza de birria sobre tortilla de harina con triple capa de mozzarella y carne de birria. Exclusiva de La Korita.</p>
-          <span class="menu-price">$39.99</span>
-        </div>
-      </div>
+       <!-- 11 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-11.avif" alt="Mulita de Birria" loading="lazy">
+         <div class="menu-card-body">
+           <h3 data-es="Mulita de Birria" data-en="Mulita de Birria">Mulita de Birria</h3>
+           <p data-es="Mulita de birria con queso derretido." data-en="Birria mulita with melted cheese.">Mulita de birria con queso derretido.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price ask" data-es="Preguntar precio" data-en="Ask for price">Preguntar precio</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 12 — Pizza La Korita Loaded -->
-      <div class="menu-card special">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="La Korita Original" data-en="La Korita Original">La Korita Original</span>
-          <h3 data-es="Pizza La Korita (Loaded)" data-en="Pizza La Korita (Loaded)">Pizza La Korita (Loaded)</h3>
-          <p data-es="Versión cargada — triple mozzarella en tortilla de harina, rodeada de fries con queso. La experiencia completa." data-en="Loaded version — triple mozzarella on flour tortilla, surrounded by cheese fries. The full experience.">Versión cargada — triple mozzarella en tortilla de harina, rodeada de fries con queso. La experiencia completa.</p>
-          <span class="menu-price">$59.99</span>
-        </div>
-      </div>
+       <!-- 12 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-12.avif" alt="Torta Birria" loading="lazy">
+         <div class="menu-card-body">
+           <h3 data-es="Torta Birria" data-en="Torta Birria">Torta Birria</h3>
+           <p data-es="Sándwich de birria con queso y frijoles." data-en="Birria sandwich with cheese and beans.">Sándwich de birria con queso y frijoles.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price ask" data-es="Preguntar precio" data-en="Ask for price">Preguntar precio</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-      <!-- 13 — Consomé -->
-      <div class="menu-card">
-        <div class="menu-card-top"></div>
-        <div class="menu-card-body">
-          <span class="menu-card-tag" data-es="Tradicional" data-en="Traditional">Tradicional</span>
-          <h3 data-es="Consomé (Chico)" data-en="Consomé (Small)">Consomé (Chico)</h3>
-          <p data-es="Caldo de birria de res 100% auténtico, con cebolla, cilantro y limón." data-en="100% authentic beef birria broth, served with onion, cilantro and lime.">Caldo de birria de res 100% auténtico, con cebolla, cilantro y limón.</p>
-          <span class="menu-price">$5.50</span>
-        </div>
-      </div>
+       <!-- 13 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-13.avif" alt="Birria Combo Plate" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-new">Combo</span>
+           <h3 data-es="Combo Plate Birria" data-en="Birria Combo Plate">Combo Plate Birria</h3>
+           <p data-es="Birria con arroz, frijoles, tortillas y salsa roja de la casa." data-en="Birria with rice, beans, tortillas, and red hot sauce.">Birria con arroz, frijoles, tortillas y salsa roja de la casa.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$21.50</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
 
-    </div>
-  </div>
-</section>
+       <!-- 14 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-14.avif" alt="Taco Regular Asada" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-new">4 piezas</span>
+           <h3 data-es="Taco Regular Asada" data-en="Taco Regular Asada">Taco Regular Asada</h3>
+           <p data-es="Cuatro tacos suaves de asada con cebolla y cilantro frescos." data-en="Four soft corn tacos with asada, onion, and cilantro.">Cuatro tacos suaves de asada con cebolla y cilantro frescos.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$16.50</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
+
+       <!-- 15 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-15.avif" alt="Birria Fries" loading="lazy">
+         <div class="menu-card-body">
+           <span class="menu-card-badge badge-hot">🔥 Popular</span>
+           <h3 data-es="Birria Fries" data-en="Birria Fries">Birria Fries</h3>
+           <p data-es="Papas con mozzarella, queso nacho y carne de birria." data-en="Fries with mozzarella cheese, nacho cheese, and birria meat.">Papas con mozzarella, queso nacho y carne de birria.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$21.50</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
+
+       <!-- 16 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-16.avif" alt="Burrito Asada" loading="lazy">
+         <div class="menu-card-body">
+           <h3 data-es="Burrito Asada" data-en="Burrito Asada">Burrito Asada</h3>
+           <p data-es="Burrito de asada con mozzarella, arroz y frijoles." data-en="Asada burrito with mozzarella cheese, rice, and beans.">Burrito de asada con mozzarella, arroz y frijoles.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price">$15.99</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
+
+       <!-- 17 -->
+       <div class="menu-card">
+         <img class="menu-card-img" src="images/menu-17.avif" alt="Torta Asada" loading="lazy">
+         <div class="menu-card-body">
+           <h3 data-es="Torta Asada" data-en="Torta Asada">Torta Asada</h3>
+           <p data-es="Pan telera con mozzarella derretida, frijoles, asada y salsa roja de la casa." data-en="Telera bread with mozzarella, beans, meat, and red hot sauce.">Pan telera con mozzarella derretida, frijoles, asada y salsa roja de la casa.</p>
+           <div class="menu-card-footer">
+             <span class="menu-price ask" data-es="Preguntar precio" data-en="Ask for price">Preguntar precio</span>
+             <button class="menu-add-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Order">+</button>
+           </div>
+         </div>
+       </div>
+
+     </div>
+   </div>
+ </section>
+
 
 <!-- TILES -->
 <section class="tiles-section">
@@ -1235,43 +1366,39 @@ section { transition: none; }
    });
  })();
 
- /* ── Menu cards: staggered entrance then float on special cards ── */
- (function() {
-   if (!('IntersectionObserver' in window)) return;
-   var cards = Array.from(document.querySelectorAll('.menu-card'));
-   var STAGGER = 0.065;
-   var DUR     = 0.65;
 
-   cards.forEach(function(c, i) {
-     c.style.opacity   = '0';
-     c.style.transform = 'translateY(38px) scale(0.97)';
-     c.style.transition =
-       'opacity '    + DUR + 's cubic-bezier(0.16,1,0.3,1) ' + (i * STAGGER) + 's,' +
-       'transform '  + DUR + 's cubic-bezier(0.16,1,0.3,1) ' + (i * STAGGER) + 's';
-   });
+  /* ── Menu cards: staggered entrance ── */
+  (function() {
+    if (!('IntersectionObserver' in window)) return;
+    var cards   = Array.from(document.querySelectorAll('.menu-card'));
+    var STAGGER = 0.055;
+    var DUR     = 0.6;
 
-   var grid = document.querySelector('.menu-grid');
-   if (!grid) return;
+    cards.forEach(function(c, i) {
+      c.style.opacity   = '0';
+      c.style.transform = 'translateY(32px) scale(0.97)';
+      c.style.transition =
+        'opacity '   + DUR + 's cubic-bezier(0.16,1,0.3,1) ' + (i * STAGGER) + 's,' +
+        'transform ' + DUR + 's cubic-bezier(0.16,1,0.3,1) ' + (i * STAGGER) + 's';
+    });
 
-   new IntersectionObserver(function(entries, self) {
-     if (!entries[0].isIntersecting) return;
-     cards.forEach(function(c, i) {
-       c.style.opacity   = '1';
-       c.style.transform = 'translateY(0) scale(1)';
-     });
-     /* After entrance completes, activate float on special cards */
-     var maxDelay = cards.length * STAGGER * 1000 + DUR * 1000 + 200;
-     setTimeout(function() {
-       cards.forEach(function(c) {
-         c.removeAttribute('style');
-         if (c.classList.contains('special')) {
-           c.classList.add('float-active');
-         }
-       });
-     }, maxDelay);
-     self.disconnect();
-   }, { threshold: 0.06 }).observe(grid);
- })();
+    var grid = document.querySelector('.menu-grid');
+    if (!grid) return;
+
+    new IntersectionObserver(function(entries, self) {
+      if (!entries[0].isIntersecting) return;
+      cards.forEach(function(c) {
+        c.style.opacity   = '1';
+        c.style.transform = 'translateY(0) scale(1)';
+      });
+      var maxDelay = cards.length * STAGGER * 1000 + DUR * 1000 + 200;
+      setTimeout(function() {
+        cards.forEach(function(c) { c.removeAttribute('style'); });
+      }, maxDelay);
+      self.disconnect();
+    }, { threshold: 0.04 }).observe(grid);
+  })();
+
 
  /* ── Stats counter ── */
  (function() {
