@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="google" content="notranslate">
-<meta name="google-site-verification" content=""><!-- TODO: Add Google Search Console verification code here -->
+<meta name="google-site-verification" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birrieria La Korita – Palmdale, CA</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -366,24 +366,6 @@ footer { background: var(--red); padding: 1.8rem 2.5rem; display: flex; justify-
   .stats-bar-inner { grid-template-columns: 1fr 1fr; }
   .stats-bar-cell:nth-child(2) { border-right: none; }
 }
-
-/* ── MAP ── */
-.map-wrap {
-  margin-top: 2rem;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 2px solid var(--mid-gray);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.map-wrap iframe {
-  display: block;
-  width: 100%;
-  height: 280px;
-  border: none;
-}
-@media (max-width: 480px) {
-  .map-wrap iframe { height: 220px; }
-}
 </style>
 </head>
 <body>
@@ -438,7 +420,7 @@ footer { background: var(--red); padding: 1.8rem 2.5rem; display: flex; justify-
   <div class="info-band-item">&#128205; 470 E Palmdale Blvd</div>
   <div class="info-band-item" data-es="&#128336; Abierto Diario · 9:15 PM – 10 PM" data-en="&#128336; Open Daily · 9:15 PM – 10 PM">&#128336; Abierto Diario · 9:15 PM – 10 PM</div>
   <div class="info-band-item">&#128222; 661 810-0010</div>
-  <div class="info-band-item" data-es="&#128663; DoorDash" data-en="&#128663; DoorDash">&#128663; DoorDash</div>
+  <div class="info-band-item" data-es="&#128663; DoorDash &amp; Postmates" data-en="&#128663; DoorDash &amp; Postmates">&#128663; DoorDash &amp; Postmates</div>
 </div>
 
 <!-- SOCIAL STRIP -->
@@ -660,7 +642,9 @@ footer { background: var(--red); padding: 1.8rem 2.5rem; display: flex; justify-
           <div>
             <div class="c-label" data-es="Horario" data-en="Hours">Horario</div>
             <div class="hours-grid">
-              <span class="hd" data-es="Lun – Dom" data-en="Mon – Sun">Lun – Dom</span><span class="ht">9:30 AM – 10:00 PM</span>
+              <span class="hd" data-es="Lun – Vie" data-en="Mon – Fri">Lun – Vie</span><span class="ht">9:15 PM – 10:00 PM</span>
+              <span class="hd" data-es="Sábado" data-en="Saturday">Sábado</span><span class="ht">9:15 PM – 11:00 PM</span>
+              <span class="hd" data-es="Domingo" data-en="Sunday">Domingo</span><span class="ht">9:15 PM – 10:00 PM</span>
             </div>
           </div>
         </div>
@@ -671,22 +655,16 @@ footer { background: var(--red); padding: 1.8rem 2.5rem; display: flex; justify-
             <div class="c-val">661 810-0010</div>
           </div>
         </div>
-        <div class="map-wrap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3296.4!2d-118.1208174!3d34.578503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c259f3948a8f37%3A0x4bae2573329dfcf5!2sBirrieria%20La%20Korita!5e0!3m2!1sen!2sus!4v1714000000000!5m2!1sen!2sus"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Birrieria La Korita on Google Maps">
-          </iframe>
-        </div>
       </div>
       <div class="order-panel">
         <h3 data-es="Ordena en Línea" data-en="Order Online">Ordena en Línea</h3>
-        <p data-es="Recibe La Korita directo en tu puerta. Disponible en DoorDash — o llámanos para recoger." data-en="Get La Korita delivered straight to your door. Available on DoorDash — or call us for pickup.">Recibe La Korita directo en tu puerta. Disponible en DoorDash — o llámanos para recoger.</p>
+        <p data-es="Recibe La Korita directo en tu puerta. Disponible en DoorDash y Postmates — o llámanos para recoger." data-en="Get La Korita delivered straight to your door. Available on DoorDash and Postmates — or call us for pickup.">Recibe La Korita directo en tu puerta. Disponible en DoorDash y Postmates — o llámanos para recoger.</p>
         <div class="order-btns">
           <button class="obtn obtn-dd" onclick="window.open('https://www.doordash.com/store/birrieria-la-korita-palmdale-40984689/','_blank')" data-es="Ordenar en DoorDash" data-en="Order on DoorDash">
             <span data-es="Ordenar en DoorDash" data-en="Order on DoorDash">Ordenar en DoorDash</span><span>&#8594;</span>
+          </button>
+          <button class="obtn obtn-pm" data-es="Ordenar en Postmates" data-en="Order on Postmates">
+            <span data-es="Ordenar en Postmates" data-en="Order on Postmates">Ordenar en Postmates</span><span>&#8594;</span>
           </button>
           <button class="obtn obtn-call" onclick="window.location.href='tel:6618100010'" data-es="Llamar para Recoger" data-en="Call for Pickup">
             <span data-es="Llamar para Recoger" data-en="Call for Pickup">Llamar para Recoger</span><span>661 810-0010</span>
