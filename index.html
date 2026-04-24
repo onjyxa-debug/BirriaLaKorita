@@ -297,6 +297,16 @@ nav {
   .catering-form-wrap { padding: 1.5rem; }
 }
 
+/* ── Light form (inside white order-panel) ── */
+.form-label-light { display:block; font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); font-weight:700; margin-bottom:0.35rem; }
+.form-input-light, .form-select-light { width:100%; box-sizing:border-box; background:#f8f8f8; border:1px solid var(--mid-gray); border-radius:2px; color:var(--dark); font-family:'Lato',sans-serif; font-size:0.88rem; padding:0.65rem 0.85rem; outline:none; transition:border-color 0.2s,background 0.2s; }
+.form-input-light::placeholder { color:#bbb; }
+.form-input-light:focus, .form-select-light:focus { border-color:var(--red); background:#fff; }
+.form-input-light.field-error, .form-select-light.field-error { border-color:var(--red); }
+.form-select-light { appearance:none; -webkit-appearance:none; cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 0.8rem center; padding-right:2rem; background-color:#f8f8f8; }
+.form-group { display:flex; flex-direction:column; }
+@media (max-width:600px) { .form-light .form-grid { grid-template-columns:1fr !important; } }
+
 /* FOOTER */
 footer { background: var(--red); padding: 1.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer-left { display: flex; align-items: center; gap: 0.9rem; }
@@ -712,7 +722,7 @@ section { transition: none; }
   <ul class="nav-links">
     <li><a href="#menu" data-es="Menú" data-en="Menu">Menú</a></li>
     <li><a href="#contact" data-es="Ubicación" data-en="Location">Ubicación</a></li>
-    <li><a href="#catering" data-es="Catering" data-en="Catering">Catering</a></li>
+    <li><a href="#contact" data-es="Catering" data-en="Catering">Catering</a></li>
     <li><a href="#contact" data-es="Ordenar" data-en="Order">Ordenar</a></li>
   </ul>
 </nav>
@@ -1044,92 +1054,74 @@ section { transition: none; }
           </button>
         </div>
         <div class="catering-note">
-          <p data-es="Catering &amp; Eventos" data-en="Catering &amp; Events">Catering &amp; Eventos</p>
-          <p data-es="¿Planeando un evento? Cubrimos toda el área del Antelope Valley. Llámanos o mándanos un DM en Instagram para cotizar." data-en="Planning an event? We cover the entire Antelope Valley. Call us or send us a DM on Instagram for a quote.">¿Planeando un evento? Cubrimos toda el área del Antelope Valley. Llámanos o mándanos un DM en Instagram para cotizar.</p>
+          <p class="form-label" style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:1rem;" data-es="Catering &amp; Eventos" data-en="Catering &amp; Events">Catering &amp; Eventos</p>
+          <div class="form-success" id="cateringSuccess" style="display:none;text-align:center;padding:1.2rem 0;">
+            <div style="font-size:2rem;margin-bottom:0.5rem;">🌮</div>
+            <strong style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--dark);" data-es="¡Solicitud Enviada!" data-en="Request Sent!">¡Solicitud Enviada!</strong>
+            <p style="font-size:0.83rem;color:var(--text-muted);margin-top:0.4rem;" data-es="Te contactamos pronto." data-en="We'll be in touch soon.">Te contactamos pronto.</p>
+          </div>
+          <form id="cateringForm" action="https://formspree.io/f/xgordney" method="POST" novalidate class="form-light">
+            <div class="form-grid" style="grid-template-columns:1fr 1fr;gap:0.9rem;">
+
+              <div class="form-group">
+                <label class="form-label-light" for="cf-name" data-es="Tu Nombre" data-en="Your Name">Tu Nombre</label>
+                <input class="form-input-light" type="text" id="cf-name" name="name" placeholder="Juan García" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label-light" for="cf-phone" data-es="Teléfono o Email" data-en="Phone or Email">Teléfono o Email</label>
+                <input class="form-input-light" type="text" id="cf-phone" name="contact" placeholder="661-555-0100" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label-light" for="cf-date" data-es="Fecha del Evento" data-en="Event Date">Fecha del Evento</label>
+                <input class="form-input-light" type="date" id="cf-date" name="event_date" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label-light" for="cf-guests" data-es="N° de Invitados" data-en="No. of Guests">N° de Invitados</label>
+                <select class="form-select-light" id="cf-guests" name="guests" required>
+                  <option value="" disabled selected>—</option>
+                  <option value="1-25">1 – 25</option>
+                  <option value="26-50">26 – 50</option>
+                  <option value="51-100">51 – 100</option>
+                  <option value="101-200">101 – 200</option>
+                  <option value="200+">200+</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="grid-column:1/-1;">
+                <label class="form-label-light" for="cf-type" data-es="Tipo de Evento" data-en="Type of Event">Tipo de Evento</label>
+                <select class="form-select-light" id="cf-type" name="event_type" required>
+                  <option value="" disabled selected>—</option>
+                  <option value="birthday"    data-es="Cumpleaños"         data-en="Birthday Party">Cumpleaños</option>
+                  <option value="wedding"     data-es="Boda"               data-en="Wedding">Boda</option>
+                  <option value="quinceañera" data-es="Quinceañera"        data-en="Quinceañera">Quinceañera</option>
+                  <option value="corporate"   data-es="Evento Corporativo" data-en="Corporate Event">Evento Corporativo</option>
+                  <option value="graduation"  data-es="Graduación"         data-en="Graduation">Graduación</option>
+                  <option value="other"       data-es="Otro"               data-en="Other">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="grid-column:1/-1;">
+                <label class="form-label-light" for="cf-notes" data-es="Notas (opcional)" data-en="Notes (optional)">Notas (opcional)</label>
+                <textarea class="form-input-light" id="cf-notes" name="notes" placeholder="Ubicación, hora, menú especial..." style="resize:vertical;min-height:70px;"></textarea>
+              </div>
+
+            </div>
+            <div style="margin-top:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+              <button class="btn-catering" type="submit" id="cateringSubmitBtn">
+                <span data-es="Enviar Solicitud" data-en="Send Request">Enviar Solicitud</span>
+              </button>
+              <span style="font-size:0.75rem;color:var(--text-muted);" data-es="Respondemos en &lt;24 hrs." data-en="We reply within 24 hrs.">Respondemos en &lt;24 hrs.</span>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- CATERING -->
-<!-- NOTE: To receive form submissions by email, sign up free at formspree.io,
-     create a form, and replace "xgordney" below with your form ID. -->
-<section class="catering-section sr-init" id="catering">
-  <div class="section-inner">
-    <div class="section-header">
-      <p class="section-eyebrow sr-clip" data-es="Eventos &amp; Catering" data-en="Events &amp; Catering">Eventos &amp; Catering</p>
-      <h2 class="section-title" data-es="¿Tienes un Evento?" data-en="Planning an Event?">¿Tienes un Evento?</h2>
-      <div class="section-rule sr-clip"></div>
-      <p style="color:rgba(255,255,255,0.55);font-size:0.92rem;margin-top:0.8rem;max-width:520px;margin-left:auto;margin-right:auto;" data-es="Llevamos la birria auténtica a tu evento. Llena el formulario y te contactamos en menos de 24 horas." data-en="We bring authentic birria to your event. Fill out the form and we'll reach out within 24 hours.">Llevamos la birria auténtica a tu evento. Llena el formulario y te contactamos en menos de 24 horas.</p>
-    </div>
-
-    <div class="catering-form-wrap sr-init">
-      <div class="form-success" id="cateringSuccess">
-        <div class="form-success-icon">🌮</div>
-        <h4 data-es="¡Solicitud Enviada!" data-en="Request Sent!">¡Solicitud Enviada!</h4>
-        <p data-es="Gracias, nos pondremos en contacto contigo pronto." data-en="Thanks! We'll be in touch with you soon.">Gracias, nos pondremos en contacto contigo pronto.</p>
-      </div>
-      <form id="cateringForm" action="https://formspree.io/f/xgordney" method="POST" novalidate>
-        <div class="form-grid">
-
-          <div class="form-group">
-            <label class="form-label" for="cf-name" data-es="Tu Nombre" data-en="Your Name">Tu Nombre</label>
-            <input class="form-input" type="text" id="cf-name" name="name" placeholder="Juan García" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="cf-phone" data-es="Teléfono o Email" data-en="Phone or Email">Teléfono o Email</label>
-            <input class="form-input" type="text" id="cf-phone" name="contact" placeholder="661-555-0100" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="cf-date" data-es="Fecha del Evento" data-en="Event Date">Fecha del Evento</label>
-            <input class="form-input" type="date" id="cf-date" name="event_date" required>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="cf-guests" data-es="Número de Invitados" data-en="Number of Guests">Número de Invitados</label>
-            <select class="form-select" id="cf-guests" name="guests" required>
-              <option value="" disabled selected data-es="Seleccionar..." data-en="Select...">Seleccionar...</option>
-              <option value="1-25">1 – 25</option>
-              <option value="26-50">26 – 50</option>
-              <option value="51-100">51 – 100</option>
-              <option value="101-200">101 – 200</option>
-              <option value="200+">200+</option>
-            </select>
-          </div>
-
-          <div class="form-group full">
-            <label class="form-label" for="cf-type" data-es="Tipo de Evento" data-en="Type of Event">Tipo de Evento</label>
-            <select class="form-select" id="cf-type" name="event_type" required>
-              <option value="" disabled selected data-es="Seleccionar..." data-en="Select...">Seleccionar...</option>
-              <option value="birthday"   data-es="Cumpleaños"          data-en="Birthday Party">Cumpleaños</option>
-              <option value="wedding"    data-es="Boda"                data-en="Wedding">Boda</option>
-              <option value="quinceañera" data-es="Quinceañera"        data-en="Quinceañera">Quinceañera</option>
-              <option value="corporate"  data-es="Evento Corporativo"  data-en="Corporate Event">Evento Corporativo</option>
-              <option value="graduation" data-es="Graduación"          data-en="Graduation">Graduación</option>
-              <option value="other"      data-es="Otro"                data-en="Other">Otro</option>
-            </select>
-          </div>
-
-          <div class="form-group full">
-            <label class="form-label" for="cf-notes" data-es="Notas Adicionales (opcional)" data-en="Additional Notes (optional)">Notas Adicionales (opcional)</label>
-            <textarea class="form-textarea" id="cf-notes" name="notes" placeholder="Ubicación, hora, menú especial..."></textarea>
-          </div>
-
-        </div>
-        <div class="form-submit">
-          <button class="btn-catering" type="submit" id="cateringSubmitBtn">
-            <span data-es="Enviar Solicitud" data-en="Send Request">Enviar Solicitud</span>
-          </button>
-          <p class="form-note" data-es="Te respondemos en menos de 24 horas." data-en="We respond within 24 hours.">Te respondemos en menos de 24 horas.</p>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer>
