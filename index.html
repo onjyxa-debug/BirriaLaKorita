@@ -252,6 +252,51 @@ nav {
 .catering-note p:first-child { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
 .catering-note p:last-child { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.4rem; }
 
+
+/* CATERING FORM */
+.catering-section { background: var(--dark); padding: 5rem 1.5rem; }
+.catering-section .section-inner { max-width: 780px; }
+.catering-form-wrap { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 2.5rem; margin-top: 2.5rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-group.full { grid-column: 1 / -1; }
+.form-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 600; }
+.form-input, .form-select, .form-textarea {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.93rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--yellow);
+  background: rgba(255,255,255,0.1);
+}
+.form-select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.form-select option { background: #1a1a1a; color: var(--white); }
+.form-textarea { resize: vertical; min-height: 90px; }
+.form-submit { margin-top: 1.5rem; display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.btn-catering { background: var(--red); color: var(--white); border: none; cursor: pointer; padding: 1rem 2.5rem; font-family: 'Oswald', sans-serif; font-size: 0.9rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; border-radius: 2px; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(200,16,46,0.4); }
+.btn-catering:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 6px 22px rgba(200,16,46,0.55); }
+.btn-catering:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.form-note { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.5; }
+.form-success { display: none; text-align: center; padding: 2rem 1rem; }
+.form-success-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+.form-success h4 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.form-success p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  .catering-form-wrap { padding: 1.5rem; }
+}
+
 /* FOOTER */
 footer { background: var(--red); padding: 1.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer-left { display: flex; align-items: center; gap: 0.9rem; }
@@ -667,7 +712,7 @@ section { transition: none; }
   <ul class="nav-links">
     <li><a href="#menu" data-es="Menú" data-en="Menu">Menú</a></li>
     <li><a href="#contact" data-es="Ubicación" data-en="Location">Ubicación</a></li>
-    <li><a href="#contact" data-es="Catering" data-en="Catering">Catering</a></li>
+    <li><a href="#catering" data-es="Catering" data-en="Catering">Catering</a></li>
     <li><a href="#contact" data-es="Ordenar" data-en="Order">Ordenar</a></li>
   </ul>
 </nav>
@@ -1007,6 +1052,85 @@ section { transition: none; }
   </div>
 </section>
 
+
+<!-- CATERING -->
+<!-- NOTE: To receive form submissions by email, sign up free at formspree.io,
+     create a form, and replace "xgordney" below with your form ID. -->
+<section class="catering-section sr-init" id="catering">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-eyebrow sr-clip" data-es="Eventos &amp; Catering" data-en="Events &amp; Catering">Eventos &amp; Catering</p>
+      <h2 class="section-title" data-es="¿Tienes un Evento?" data-en="Planning an Event?">¿Tienes un Evento?</h2>
+      <div class="section-rule sr-clip"></div>
+      <p style="color:rgba(255,255,255,0.55);font-size:0.92rem;margin-top:0.8rem;max-width:520px;margin-left:auto;margin-right:auto;" data-es="Llevamos la birria auténtica a tu evento. Llena el formulario y te contactamos en menos de 24 horas." data-en="We bring authentic birria to your event. Fill out the form and we'll reach out within 24 hours.">Llevamos la birria auténtica a tu evento. Llena el formulario y te contactamos en menos de 24 horas.</p>
+    </div>
+
+    <div class="catering-form-wrap sr-init">
+      <div class="form-success" id="cateringSuccess">
+        <div class="form-success-icon">🌮</div>
+        <h4 data-es="¡Solicitud Enviada!" data-en="Request Sent!">¡Solicitud Enviada!</h4>
+        <p data-es="Gracias, nos pondremos en contacto contigo pronto." data-en="Thanks! We'll be in touch with you soon.">Gracias, nos pondremos en contacto contigo pronto.</p>
+      </div>
+      <form id="cateringForm" action="https://formspree.io/f/xgordney" method="POST" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label class="form-label" for="cf-name" data-es="Tu Nombre" data-en="Your Name">Tu Nombre</label>
+            <input class="form-input" type="text" id="cf-name" name="name" placeholder="Juan García" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-phone" data-es="Teléfono o Email" data-en="Phone or Email">Teléfono o Email</label>
+            <input class="form-input" type="text" id="cf-phone" name="contact" placeholder="661-555-0100" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-date" data-es="Fecha del Evento" data-en="Event Date">Fecha del Evento</label>
+            <input class="form-input" type="date" id="cf-date" name="event_date" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cf-guests" data-es="Número de Invitados" data-en="Number of Guests">Número de Invitados</label>
+            <select class="form-select" id="cf-guests" name="guests" required>
+              <option value="" disabled selected data-es="Seleccionar..." data-en="Select...">Seleccionar...</option>
+              <option value="1-25">1 – 25</option>
+              <option value="26-50">26 – 50</option>
+              <option value="51-100">51 – 100</option>
+              <option value="101-200">101 – 200</option>
+              <option value="200+">200+</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="cf-type" data-es="Tipo de Evento" data-en="Type of Event">Tipo de Evento</label>
+            <select class="form-select" id="cf-type" name="event_type" required>
+              <option value="" disabled selected data-es="Seleccionar..." data-en="Select...">Seleccionar...</option>
+              <option value="birthday"   data-es="Cumpleaños"          data-en="Birthday Party">Cumpleaños</option>
+              <option value="wedding"    data-es="Boda"                data-en="Wedding">Boda</option>
+              <option value="quinceañera" data-es="Quinceañera"        data-en="Quinceañera">Quinceañera</option>
+              <option value="corporate"  data-es="Evento Corporativo"  data-en="Corporate Event">Evento Corporativo</option>
+              <option value="graduation" data-es="Graduación"          data-en="Graduation">Graduación</option>
+              <option value="other"      data-es="Otro"                data-en="Other">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="cf-notes" data-es="Notas Adicionales (opcional)" data-en="Additional Notes (optional)">Notas Adicionales (opcional)</label>
+            <textarea class="form-textarea" id="cf-notes" name="notes" placeholder="Ubicación, hora, menú especial..."></textarea>
+          </div>
+
+        </div>
+        <div class="form-submit">
+          <button class="btn-catering" type="submit" id="cateringSubmitBtn">
+            <span data-es="Enviar Solicitud" data-en="Send Request">Enviar Solicitud</span>
+          </button>
+          <p class="form-note" data-es="Te respondemos en menos de 24 horas." data-en="We respond within 24 hours.">Te respondemos en menos de 24 horas.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
@@ -1191,6 +1315,57 @@ section { transition: none; }
        }
      });
    }, { threshold: 0.5 }).observe(bar);
+ })();
+
+ /* ── Catering form submission ── */
+ (function() {
+   var form    = document.getElementById('cateringForm');
+   var success = document.getElementById('cateringSuccess');
+   var btn     = document.getElementById('cateringSubmitBtn');
+   if (!form) return;
+
+   form.addEventListener('submit', function(e) {
+     e.preventDefault();
+
+     /* Basic required-field validation */
+     var required = form.querySelectorAll('[required]');
+     var valid = true;
+     required.forEach(function(field) {
+       field.style.borderColor = '';
+       if (!field.value.trim()) {
+         field.style.borderColor = 'var(--red)';
+         valid = false;
+       }
+     });
+     if (!valid) return;
+
+     btn.disabled = true;
+     btn.querySelector('span').textContent = '...';
+
+     var data = new FormData(form);
+
+     fetch(form.action, {
+       method: 'POST',
+       body: data,
+       headers: { 'Accept': 'application/json' }
+     })
+     .then(function(res) {
+       if (res.ok) {
+         form.style.display    = 'none';
+         success.style.display = 'block';
+       } else {
+         throw new Error('server');
+       }
+     })
+     .catch(function() {
+       /* Fallback: open mail client */
+       var d = Object.fromEntries ? Object.fromEntries(data) : {};
+       var body = 'Nombre: ' + (d.name||'') + '%0AContacto: ' + (d.contact||'') + '%0AFecha: ' + (d.event_date||'') + '%0AInvitados: ' + (d.guests||'') + '%0ATipo: ' + (d.event_type||'') + '%0ANotas: ' + (d.notes||'');
+       window.location.href = 'mailto:on.j.yx.a@gmail.com?subject=Catering Request – La Korita&body=' + body;
+       btn.disabled = false;
+       btn.querySelector('span').textContent = currentLang === 'es' ? 'Enviar Solicitud' : 'Send Request';
+     });
+   });
  })();
  </script>
 
